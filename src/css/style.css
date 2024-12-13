@@ -1,0 +1,592 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Reddit+Sans+Condensed:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+:root {
+  --primary-crl: #1a1831;
+  --secondary-crl: #00abf0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Remove default margin */
+body, h1, h2, h3, h4, p, 
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'], 
+div[role='list'] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+    color: white;
+    background-color: var(--primary-crl);
+    font-family: "Reddit Sans Condensed", sans-serif;
+  }
+
+hr {
+  width: 70%;
+}
+
+/* Header */
+
+.logo {
+    font-size: 2rem;
+    font-family: "Satisfy", cursive;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    font-family: "Caveat", cursive;
+    font-weight: 800;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-crl);
+    height: 10svh;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0px 0.1px 5px 0px rgba(51,255,0,1);
+    -moz-box-shadow: 0px 0.1px 5px 0px rgba(51,255,0,1);
+    box-shadow: 0px 0.1px 5px 0px rgba(51,255,0,1);
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+
+ul.topBotomBordersOut a:before, 
+ul.topBotomBordersOut a:after
+{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background: yellowgreen;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+ul.topBotomBordersOut a:before
+{
+    top: 0px;
+    transform: translateY(10px);
+}
+
+ul.topBotomBordersOut a:after
+{
+    bottom: 0px;
+    transform: translateY(-10px);
+}
+
+ul.topBotomBordersOut a:hover:before, 
+ul.topBotomBordersOut a:hover:after
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.active {
+  color: yellowgreen;
+  font-weight: 900;
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger-menu span {
+  width: 2rem;
+  height: 0.2rem;
+  background-color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.hamburger-menu.change span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu.change span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.change span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* mobile nav */
+
+.mobile-nav {
+  position: fixed;
+  width: 100%;
+  transform: translateX(-100%); /* Off screen by default */
+  opacity: 0; /* Invisible by default */
+  background-color: var(--primary-crl);
+  left: 0;
+  min-height: 100%;
+  transition: transform 0.7s ease, opacity 0.3s ease; /* Transition transform and opacity */
+  z-index: 999;
+}
+
+.mobile-nav.show {
+  transform: translateX(0); /* On screen when .show is added */
+  opacity: 1; /* Visible when .show is added */
+}
+
+.nav-links-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  margin-top: 2rem;
+}
+
+.nav-links-mobile li a {
+  text-decoration: none;
+  display: block;
+  padding: .5rem;
+}
+
+.nav-links-mobile li a:hover {
+  color: var(--secondary-crl);
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links-mobile i {
+padding: .5rem 2rem;
+}
+
+.resume-btn{
+  display: block;
+  font-family: sans-serif;
+  text-decoration: none;
+  border-top: 2px solid #f6ff00;
+  border-bottom: 2px solid #f6ff00;
+  padding: 10px;
+  letter-spacing: 2px;
+  transition: all .25s;
+}
+
+.resume-btn:hover{
+  letter-spacing: 15px;
+}
+
+/* hero video
+#myVideo {
+  width: fit-content;
+  height: fit-content;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+} */
+
+
+@media screen and (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+
+  .resume-btn {
+    background-color: #000000;
+    display: none;
+  }
+  .about {
+    flex-direction: column;
+  }
+}
+
+
+
+/* hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url();
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
+/* welcome text animation*/
+#code {
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: pre; /* Keeps spaces and line breaks */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+  font-size: 1.5rem;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+/* about */
+
+.about {
+  padding: 1rem 2rem;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--primary-color);
+  width: 100%;
+}
+
+.scroll-reveal {
+  max-width: 30em;
+}
+
+.profile-img img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #00abf0;
+  box-shadow: 0px 0px 37px 7px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 0px 0px 37px 7px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0px 0px 37px 7px rgba(0,0,0,0.7);
+  transition: all 1s ease;
+}
+
+.scroll-reveal h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.scroll-reveal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #00abf0;
+}
+
+.scroll-reveal p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+/* scroll-reveal animation */
+
+.scroll-reveal h1, .scroll-reveal h2, .scroll-reveal p {
+  color: rgba(255, 255, 255, 0.1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  -webkit-background-size: 0% 100%;
+  background-size: 0% 100%;
+  background-image: linear-gradient(90deg, white, white);
+  animation: scroll-reveal linear forwards;
+  animation-timeline: view();
+}
+
+.scroll-reveal h1 {
+  animation-range-start: cover 20vh;
+  animation-range-end: cover 30vh;
+}
+
+.scroll-reveal h2 {
+  animation-range-start: cover 22.5vh;
+  animation-range-end: cover 30vh;
+}
+
+.scroll-reveal p {
+  animation-range-start: cover 22.5vh;
+  animation-range-end: cover 50vh;
+  display: inline;
+}
+
+
+@keyframes scroll-reveal {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.typewriter-effect{
+  font-size: 34px;
+  font-weight: 600;
+  min-width: 20rem;
+}
+
+.typewriter-effect span{
+  position: relative;
+}
+
+.typewriter-effect span::before{
+  content: "Keorkes Azdo";
+  color: #c5d86d;
+  animation: words 20s infinite;
+}
+
+.typewriter-effect span::after{
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 120%;
+  background-color: var(--primary-crl);
+  border-left: 2px solid #ff7f50;
+  right: -8px;
+  animation: cursor .8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+  to{
+      border-left: 2px solid #ff7f5000;
+  }
+}
+
+@keyframes words {
+  0%,20%{
+    content: "Keorkes Azdo";
+  }
+  21%,40%{
+    content: "ܓܝܘܪܓܝܣ ܐܙܕܘ";
+  }
+  41%,60%{
+    content: "Keorkes Azdo";
+  }
+  61%,80%{
+    content: "ܓܝܘܪܓܝܣ ܐܙܕܘ";
+  }
+  81%,100%{
+    content: "Keorkes Azdo";
+  }
+}
+
+@keyframes typing {
+  10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+      width: 0;
+  }
+  5%,20%,25%,40%,45%,60%,65%,80%,85%{
+      width: calc(100% + 8px);
+  }
+}
+
+.projects {
+  display: flex;
+  padding: 1rem 2rem;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+.card {
+  display: flex; 
+  flex-direction: column; 
+  border-radius: 16px  16px 0px 0px;
+  width: 272px;
+  height: fit-content;
+
+  background-color: #0e2431;
+
+
+  overflow: hidden; 
+  
+}
+.card-body{
+  flex-grow: 1;
+  padding: 24px; 
+}
+
+.card-title{
+  text-decoration: underline;
+  font-size: 1.5rem;  
+}
+
+.card-text{
+  line-height: 1.4;
+  margin: 10px 0px 0px 0px; 
+  font-size: 17px;
+  
+}
+
+.card-btn {
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+  padding: 10px 10px;
+  display: block;
+  text-decoration: none;
+}
+.card-btn {
+  transition: all 0.3s;
+}
+.card-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.5);
+  transform: scale(0.1, 1);
+}
+.card-btn:hover  {
+  letter-spacing: 2px;
+}
+.card-btn:hover::before {
+  opacity: 1; 
+  transform: scale(1, 1); 
+}
+.card-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255,255,255,0.1);
+}
+.card-btn:hover::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+/* educatiom */
+
+.education {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* contact */
+
+.contact {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 5rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 4rem;
+}
+
+/* show on scroll */
+.hidden {
+  opacity: 0;
+  transform: translatex(-100%);
+  transition: all 2s;
+}
+
+.show {
+  opacity: 1;
+  transform: translatex(0);
+}
+
+.show-x {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.link:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+.link:nth-child(2) {
+  transition-delay: 500ms;
+}
+
+.link:nth-child(3) {
+  transition-delay: 1000ms;
+}
+
+.link:nth-child(4) {
+  transition-delay: 1500ms;
+}
+
+.link:nth-child(5) {
+  transition-delay: 2000ms;
+}
